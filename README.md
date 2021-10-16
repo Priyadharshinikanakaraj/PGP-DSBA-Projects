@@ -1,6 +1,4 @@
-# PGP-DSBA-Projects
-Academic Projects done during PGP certification
-10 modules of PGP-DSBA program are contained in 10 branches
-Have created branches in the name of the modules covered
-My e-portfolio link below for reference
-https://olympus1.greatlearning.in/eportfolio/private/ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6STFOaUo5LmV5SjFjMlZ5WDJsa0lqbzNPREEzTVRSOS41WVdBeUNQSXRSYzAzZUl5ZEFSYndhZk0wN1BCdUpKWlJjVlBROWJkVEhN?pb_id=4590
+Bank Customer Segmentation and Insurance Claim Prediction
+The project involved drawing inferences from 2 case studies, namely - Bank Marketing & Insurance. The concepts of Clustering, CART, Random Forest, Artificial Neural Network are used to draw inferences from these case studies. Various performance metrics have been used to validate the performance of predictions on Test & Train sets.
+Skills and Tools
+Clustering, CART, Random Forest, Artificial Neural Networks
