@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/kpriyadh/Documents/PGP-DSBA/Module X - SQL/Project/New Orders.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1901"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,7:mainADDRESS"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="ADDRESS" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="90"/><column index="2" value="300"/><column index="3" value="261"/><column index="4" value="111"/><column index="5" value="98"/><column index="6" value="62"/><column index="7" value="66"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">-- product_id, product_desc, product_price,) as per the following criteria and
+-- sort them in descending order of category: a. If the category is 2050,
+-- increase the price by 2000 b. If the category is 2051, increase the price by
+-- 500 c. If the category is 2052, increase the price by 600. Hint: Use case
+-- statement. no permanent change in table required. (60 ROWS) [NOTE:
+-- PRODUCT TABLE]
+select PRODUCT_CLASS_CODE, PRODUCT_ID, PRODUCT_DESC, PRODUCT_PRICE,
+CASE
+			WHEN  PRODUCT_CLASS_CODE = 2050 THEN PRODUCT_PRICE+2000
+			WHEN PRODUCT_CLASS_CODE=2051 THEN PRODUCT_PRICE+500
+			WHEN PRODUCT_CLASS_CODE=2052 THEN PRODUCT_PRICE+600
+ELSE PRODUCT_PRICE 
+END as UPDATED_PRICE		
+FROM PRODUCT 
+ORDER BY PRODUCT_CLASS_CODE DESC; 
+
+
+-- 2. Write a query to display (product_class_desc, product_id, product_desc,
+-- product_quantity_avail ) and Show inventory status of products as below as
+-- per their available quantity: a. For Electronics and Computer categories, if
+-- available quantity is &lt;= 10, show 'Low stock', 11 &lt;= qty &lt;= 30, show 'In
+-- stock', &gt;= 31, show 'Enough stock' b. For Stationery and Clothes categories,
+-- if qty &lt;= 20, show 'Low stock', 21 &lt;= qty &lt;= 80, show 'In stock', &gt;= 81, show
+-- 'Enough stock' c. Rest of the categories, if qty &lt;= 15 – 'Low Stock', 16 &lt;= qty
+-- &lt;= 50 – 'In Stock', &gt;= 51 – 'Enough stock' For all categories, if available
+-- quantity is 0, show 'Out of stock'. Hint: Use case statement. (60 ROWS)
+-- [NOTE: TABLES TO BE USED – product, product_class]
+SELECT  pc.PRODUCT_CLASS_DESC, p.PRODUCT_ID, p.PRODUCT_DESC, p.PRODUCT_QUANTITY_AVAIL,
+CASE
+			WHEN  PRODUCT_QUANTITY_AVAIL &lt;=10 THEN 'Low Stock'
+		    WHEN  PRODUCT_QUANTITY_AVAIL &gt;=11 AND PRODUCT_QUANTITY_AVAIL &lt;=30   THEN  'In Stock'
+			WHEN  PRODUCT_QUANTITY_AVAIL &gt;=31 THEN  'Enough Stock'
+			WHEN  PRODUCT_QUANTITY_AVAIL &lt;0 THEN 'No Stock'
+END AS InventoryStatus
+FROM PRODUCT as p inner JOIN PRODUCT_CLASS as pc
+on pc.PRODUCT_CLASS_CODE = p.PRODUCT_CLASS_CODE
+where PRODUCT_CLASS_DESC = &quot;Electronics&quot; OR PRODUCT_CLASS_DESC =  &quot;Computer&quot;;
+
+---------
+SELECT  pc.PRODUCT_CLASS_DESC, p.PRODUCT_ID, p.PRODUCT_DESC, p.PRODUCT_QUANTITY_AVAIL,
+CASE
+			WHEN  PRODUCT_QUANTITY_AVAIL &lt;=20 THEN 'Low Stock'
+		    WHEN  PRODUCT_QUANTITY_AVAIL &gt;=21 AND PRODUCT_QUANTITY_AVAIL &lt;=80   THEN  'In Stock'
+			WHEN  PRODUCT_QUANTITY_AVAIL &gt;=81 THEN  'Enough Stock'
+			WHEN  PRODUCT_QUANTITY_AVAIL &lt;0 THEN 'No Stock'
+END AS InventoryStatus
+FROM PRODUCT as p inner JOIN PRODUCT_CLASS as pc
+on pc.PRODUCT_CLASS_CODE = p.PRODUCT_CLASS_CODE
+where PRODUCT_CLASS_DESC = &quot;Clothes&quot; OR PRODUCT_CLASS_DESC =  &quot;Stationery&quot;;
+
+------------
+
+SELECT  pc.PRODUCT_CLASS_DESC, p.PRODUCT_ID, p.PRODUCT_DESC, p.PRODUCT_QUANTITY_AVAIL,
+CASE
+			WHEN  PRODUCT_QUANTITY_AVAIL &lt;=15 THEN 'Low Stock'
+		    WHEN  PRODUCT_QUANTITY_AVAIL &gt;=16 AND PRODUCT_QUANTITY_AVAIL &lt;=50   THEN  'In Stock'
+			WHEN  PRODUCT_QUANTITY_AVAIL &gt;=51 THEN  'Enough Stock'
+			WHEN  PRODUCT_QUANTITY_AVAIL &lt;0 THEN 'No Stock'
+END AS InventoryStatus
+FROM PRODUCT as p inner JOIN PRODUCT_CLASS as pc
+on pc.PRODUCT_CLASS_CODE = p.PRODUCT_CLASS_CODE
+where PRODUCT_CLASS_DESC NOT IN ('Electronics', 'Computer', 'Clothes','Stationery');
+
+-- 3. Write a query to Show the count of cities in all countries other than USA
+-- &amp; MALAYSIA, with more than 1 city, in the descending order of CITIES. (2
+-- rows) [NOTE: ADDRESS TABLE, Do not use Distinct]
+Select count(CITY), COUNTRY 
+From ADDRESS  
+where COUNTRY not in ('USA', 'Malaysia') 
+GROUP BY COUNTRY having count(CITY) &gt; 1 
+ORDER by count(CITY) DESC ;
+
+-- 4. Write a query to display the customer_id,customer full name,city,pincode,and order details 
+-- (order id, product class desc, product desc,
+-- subtotal(product_quantity * product_price)) for orders shipped to cities
+-- whose pin codes do not have any 0s in them. Sort the output on customer
+-- name and subtotal. (52 ROWS) [NOTE: TABLE TO BE USED -
+-- online_customer, address, order_header, order_items, product,
+-- product_class]
+
+select c.CUSTOMER_ID, c.CUSTOMER_FNAME || ' ' || c.CUSTOMER_LNAME AS FULL_NAME,  a.CITY, a.PINCODE ,
+o.ORDER_ID,  pc.PRODUCT_CLASS_DESC, p.PRODUCT_DESC, (p.PRODUCT_PRICE * o.PRODUCT_QUANTITY ) as subtotal 
+from ONLINE_CUSTOMER c  INNER JOIN ADDRESS a on c.ADDRESS_ID = a.ADDRESS_ID  
+join ORDER_HEADER oh on c.CUSTOMER_ID=oh.CUSTOMER_ID 
+join ORDER_ITEMS o on oh.ORDER_ID = o.ORDER_ID
+join PRODUCT p on p.PRODUCT_ID = o.PRODUCT_ID
+join PRODUCT_CLASS pc on pc.PRODUCT_CLASS_CODE = p.PRODUCT_CLASS_CODE
+where a.PINCODE  not like '%0%'  and oh.ORDER_STATUS = &quot;Shipped&quot; order by FULL_NAME , subtotal ;
+
+-- 5. Write a Query to display product id,product
+-- description,totalquantity(sum(product quantity) for an item which has been
+-- bought maximum no. of times (Quantity Wise) along with product id 201.
+-- (USE SUB-QUERY) (1 ROW) [NOTE: ORDER_ITEMS TABLE, PRODUCT TABLE]
+
+select  ORDER_ID, PRODUCT_ID, max(product_quantity) from ORDER_ITEMS where ORDER_ID in ( select  ORDER_ID from
+ORDER_ITEMS where PRODUCT_ID = 201) ;
+
+-- 6. Write a query to display the customer_id,customer name, email and order
+-- details (order id, product desc,product qty, subtotal(product_quantity *
+-- product_price)) for all customers even if they have not ordered any item.
+-- (225 ROWS) [NOTE: TABLE TO BE USED - online_customer, order_header,
+-- order_items, product]
+SELECT CUSTOMER_ID, CUSTOMER_FNAME, CUSTOMER_EMAIL from ONLINE_CUSTOMER;
+select o.ORDER_ID, p.PRODUCT_DESC, o.PRODUCT_QUANTITY, (p.PRODUCT_PRICE * o.PRODUCT_QUANTITY ) as subtotal from 
+ORDER_ITEMS o inner join PRODUCT p  on o.PRODUCT_ID = p.PRODUCT_ID;</sql><current_tab id="0"/></tab_sql></sqlb_project>
