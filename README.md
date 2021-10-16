@@ -1,6 +1,6 @@
-# PGP-DSBA-Projects
-Academic Projects done during PGP certification
-10 modules of PGP-DSBA program are contained in 10 branches
-Have created branches in the name of the modules covered
-My e-portfolio link below for reference
-https://olympus1.greatlearning.in/eportfolio/private/ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6STFOaUo5LmV5SjFjMlZ5WDJsa0lqbzNPREEzTVRSOS41WVdBeUNQSXRSYzAzZUl5ZEFSYndhZk0wN1BCdUpKWlJjVlBROWJkVEhN?pb_id=4590
+Gems & Holiday Package Prediction
+
+This project is based on 2 cases studies : Gems Price Prediction and Holiday Package prediction. In the first case study, concepts of linear regression are tested and it is expected from the learner to predict the price of gems based on multiple variables to help company maximize profits. In the second case, concepts of logistic regression and linear discriminant analysis are tested. One has to predict if the customer will purchase the holiday package to target the relevant customer base.
+
+Skills and Tools
+Linear Regression, Logistic Regression, Linear discriminant Analysis
