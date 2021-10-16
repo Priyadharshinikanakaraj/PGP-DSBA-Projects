@@ -1,6 +1,6 @@
-# PGP-DSBA-Projects
-Academic Projects done during PGP certification
-10 modules of PGP-DSBA program are contained in 10 branches
-Have created branches in the name of the modules covered
-My e-portfolio link below for reference
-https://olympus1.greatlearning.in/eportfolio/private/ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6STFOaUo5LmV5SjFjMlZ5WDJsa0lqbzNPREEzTVRSOS41WVdBeUNQSXRSYzAzZUl5ZEFSYndhZk0wN1BCdUpKWlJjVlBROWJkVEhN?pb_id=4590
+Online retail Orders Analysis
+
+This project is based on the order management functionality of an online retail store in which you are provided with the “orders” database and you are asked some queries related to it. Answers to these queries will help the company in making data-driven decisions that will impact the overall growth of the online retail store.  
+
+Skills and Tools
+Joins, Sub Queries, SQL-clauses-statements-conditions, SQLite using DB Browser and MySQL Workbench
