@@ -1,6 +1,4 @@
-# PGP-DSBA-Projects
-Academic Projects done during PGP certification
-10 modules of PGP-DSBA program are contained in 10 branches
-Have created branches in the name of the modules covered
-My e-portfolio link below for reference
-https://olympus1.greatlearning.in/eportfolio/private/ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6STFOaUo5LmV5SjFjMlZ5WDJsa0lqbzNPREEzTVRSOS41WVdBeUNQSXRSYzAzZUl5ZEFSYndhZk0wN1BCdUpKWlJjVlBROWJkVEhN?pb_id=4590
+Salary Analysis using ANOVA and Principal Component Analysis on College Admissions Data
+The project involved drawing inferences from 2 case studies, namely - Salary Analysis, College Admissions Data. The concepts of Exploratory Data Analysis, Analysis of Variance, and Principal Component Analysis are used to draw inferences from these case studies.
+Skills and Tools
+ANOVA, EDA, PCA
