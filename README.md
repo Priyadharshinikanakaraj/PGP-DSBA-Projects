@@ -1,6 +1,1 @@
-# PGP-DSBA-Projects
-Academic Projects done during PGP certification
-10 modules of PGP-DSBA program are contained in 10 branches
-Have created branches in the name of the modules covered
-My e-portfolio link below for reference
-https://olympus1.greatlearning.in/eportfolio/private/ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6STFOaUo5LmV5SjFjMlZ5WDJsa0lqbzNPREEzTVRSOS41WVdBeUNQSXRSYzAzZUl5ZEFSYndhZk0wN1BCdUpKWlJjVlBROWJkVEhN?pb_id=4590
+This project is based on 2 case-studies: Vote Prediction and Text Analysis. The first project is to predict which party a citizen is going to vote for on the basis of their age and according to the answers given by the citizens to the questions asked in a survey conducted. The second project is based on the analysis of the inaugural U.S.A. Presidential speeches. One has to draw inferences based on the analysis done on these speeches.
